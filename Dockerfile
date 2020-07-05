@@ -9,12 +9,12 @@ RUN apk add --no-cache \
   ca-certificates \
   ttf-freefont
 
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+ENV LANG="C.UTF-8" \
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
   PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
-RUN addgroup -S puppeteeruser && adduser -S -g puppeteeruser puppeteeruser && \
+RUN addgroup -S puppeteeruser && \
+  adduser -S -g puppeteeruser puppeteeruser && \
   chown -R puppeteeruser:puppeteeruser /home/puppeteeruser
-
-ENV LANG="C.UTF-8"
 
 USER puppeteeruser
